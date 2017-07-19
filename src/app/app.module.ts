@@ -7,12 +7,14 @@ import { HeroesComponent } from './heroes.component';
 import { HeroDetailComponent } from './hero-detail.component';
 import { HeroService } from './hero.service';
 import { AppComponent } from './app.component';
+import { DashboardComponent } from './dashboard.component';
 
 @NgModule({
   declarations: [
     HeroesComponent,
     HeroDetailComponent,
-    AppComponent
+    AppComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,
@@ -20,12 +22,25 @@ import { AppComponent } from './app.component';
 [(ngModel)] */
 	RouterModule.forRoot([
 		{
-			path: 'heroes',
+			path: 'heroes', //define the component of /heroes
 			component: HeroesComponent
+		},
+		{
+			path: 'dashboard', //define the component of /dashboard
+			component: DashboardComponent
+		},
+		{
+			path: '', //redirect to dashboard immediately if users go to home/
+			redirectTo: '/dashboard',
+			pathMatch: 'full'
+		},
+		{
+			path: 'detail/:id', //:id serves as a place holder
+			component: HeroDetailComponent
 		}
 	])
   ],
-  providers: [HeroService],
+  providers: [HeroService], //set HeroService available for all components
   bootstrap: [AppComponent]
 })
 export class AppModule { }

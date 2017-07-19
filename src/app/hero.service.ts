@@ -9,5 +9,11 @@ export class HeroService{
 		to an array of hero objects */
 		return Promise.resolve(HEROES);
 	}
+
+	getHero(id: number): Promise<Hero> {
+		return this.getHeroes()
+					.then(heroes => heroes.find(hero => hero.id === id));
+	//filters the heoroes list (from getHeroes) by id
+	}
 }
 
