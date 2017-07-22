@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, ParamMap } from '@angular/router';
 //to take :id from ParamMap observable in ActivatedRoute service
 import { Location } from '@angular/common';
@@ -9,7 +9,8 @@ import { HeroService } from './hero.service';
 
 @Component({
 	selector: 'hero-detail',
-	templateUrl: './hero-detail.component.html'
+	templateUrl: './hero-detail.component.html',
+	styleUrls: ['./hero-detail.component.css']
 })
 
 export class HeroDetailComponent implements OnInit {
@@ -19,7 +20,7 @@ export class HeroDetailComponent implements OnInit {
 		private location: Location
 		) {}
 
-	@Input() hero: Hero; //var hero takes input from other components
+	hero: Hero; //var hero takes input from other components
 
 	ngOnInit(): void {
 		this.route.paramMap
