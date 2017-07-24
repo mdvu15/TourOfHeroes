@@ -43,7 +43,7 @@ export class HeroesComponent implements OnInit {
     if (!name) {return;}
     this.heroService.create(name) //call heroService's method create
     .then(hero => {
-      this.heroes.push(hero); //add to heroes object of the component (not the service)
+      this.heroes.push(hero); //add newly created hero to 'heroes' object of the component 
       this.selectedHero = null;
     });
   }
