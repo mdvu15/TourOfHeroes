@@ -20,8 +20,8 @@ export class HeroDetailComponent implements OnInit {
 		private location: Location
 		) {}
 
-	hero: Hero; //var hero takes input from other components
-
+	hero: Hero;
+	
 	ngOnInit(): void {
 		this.route.paramMap
 		.switchMap((params: ParamMap) => this.heroService.getHero(+params.get('id')))

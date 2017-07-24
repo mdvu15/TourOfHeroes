@@ -31,11 +31,29 @@ export class HeroesComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.getHeroes();
+    this.getHeroes();   //call getHeroes upon intialization
   }
-  // call getHeroes upon intialization
+
   gotoDetail(): void {
-      this.router.navigate(['/detail', this.selectedHero.id ]);
+    this.router.navigate(['/detail', this.selectedHero.id ]);
+  }
+
+  add(name: string): void {
+    name = name.trim()
+    if (!name) {return;}
+    this.heroService.create(name) //call heroService's method create
+    .then(hero => {
+      this.heroes.push(hero); //add to heroes object of the component (not the service)
+      this.selectedHero = null;
+    });
+  }
+
+  delete(hero: Hero): void {
+    this.heroService.delete(hero.id) //call heroService's delete method
+    .then(() => {
+      this.heroes.filter(h => h !== hero); //returns an array that satisfies the callback conditions
+      if (this.selectedHero === hero) {this.selectedHero = null};
+    })
   }
 };
 
