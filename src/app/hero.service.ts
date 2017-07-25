@@ -31,7 +31,8 @@ export class HeroService{
 
     private handleError(error: any): Promise<any> {
         console.error('An error occurred', error);
-        return Promise.reject(error.message || error); //return a promise object rejected with a given reason
+        return Promise.reject(error.message || error); //return a promise object 
+        //rejected with a given reason
     }
 
     private headers = new Headers({'Content-Type': 'application/json'});

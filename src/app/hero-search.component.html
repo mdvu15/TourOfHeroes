@@ -1,0 +1,13 @@
+<div id="search-component">
+  <h4>Hero Search</h4>
+  <input #searchBox id="search-box" (keyup)="search(searchBox.value)" />
+  <!-- (keyup) call the search function everytime user input a character -->
+  <div>
+    <div *ngFor="let hero of heroes | async" 
+         (click)="gotoDetail(hero)" class="search-result" >
+         <!-- async pipe convert the Observable 'heroes' to an array 
+         for *ngFor -->
+      {{hero.name}}
+    </div>
+  </div>
+</div>
